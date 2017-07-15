@@ -29,10 +29,6 @@ h1 {
     height: 15%;
     display: flex;
 }
-.countdown {
-    background-color: lightsalmon;
-    height: 65%;
-}
 .break {
     background-color: #CCD6DD;
     width: 50%;
@@ -54,9 +50,12 @@ h1 {
     justify-content: center;
 
 }
-.breakbottom button {
-    margin-right: 2em;
-    margin-left: 2em;
+.breakbottom button , .sessionbottom button{
+    margin-right: 1em;
+    margin-left: 1em;
+    font-size: 1.3em;
+    background-color: white;
+    border-radius: 10px;
 }
 .sessiontop {
     border: 2px white solid;
@@ -70,8 +69,38 @@ h1 {
     align-items: center;
     justify-content: center;
 }
-.sessionbottom button{
-    margin-left: 2em;
-    margin-right: 2em;
+.countdown {
+    background-color: slateblue;
+    height: 65%;
+    text-align: center;
 }
-
+.face {
+    background-color: lightblue;
+    position: relative;
+    top:3em;
+    height: 75%;
+    width: 40%;
+    margin: 0 auto;
+    border-radius: 50%;
+}
+.facetime {
+    position: relative;
+    top: 1em;
+}
+.countdown button {
+    font-family: "Lobster", cursive;
+    font-size: 1.4em;
+}
+.start {
+    background-color: lightgreen;
+    color: green;
+}
+.pause {
+    background-color: lightblue;
+    color: blue;
+    margin: 0 1.3em;
+}
+.stop {
+    background-color: lightpink;
+    color: red;
+}
