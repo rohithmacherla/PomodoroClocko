@@ -6,6 +6,7 @@ body {
 h1 {
     margin: 0;
     font-size: 5em;
+    padding-top: .3em;
     font-family: "Lobster", cursive;
     letter-spacing: .1em;
 }
@@ -20,12 +21,57 @@ h1 {
     background-color: lightblue;
     height: 20%;
     text-align: center;
+    border-top-left-radius: 50%;
+    border-bottom-right-radius: 50%;
 }
 .settings {
     background-color: lightgrey;
     height: 15%;
+    display: flex;
 }
 .countdown {
-    background-color: lightgreen;
+    background-color: lightsalmon;
     height: 65%;
 }
+.break {
+    background-color: #CCD6DD;
+    width: 50%;
+}
+.session {
+    background-color: #CCD6DD;
+    width: 50%;
+}
+.breaktop {
+    border: solid 2px white;
+    text-align: center;
+}
+.breaktop h2 {
+    margin: 0px;
+}
+.breakbottom {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+.breakbottom button {
+    margin-right: 2em;
+    margin-left: 2em;
+}
+.sessiontop {
+    border: 2px white solid;
+    text-align: center;
+}
+.sessiontop h2 {
+    margin: 0;
+}
+.sessionbottom {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.sessionbottom button{
+    margin-left: 2em;
+    margin-right: 2em;
+}
+
