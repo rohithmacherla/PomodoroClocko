@@ -1,0 +1,31 @@
+body {
+    background-color: lightpink;
+    height: 95vh;
+    border: 3px solid white;
+}
+h1 {
+    margin: 0;
+    font-size: 5em;
+    font-family: "Lobster", cursive;
+    letter-spacing: .1em;
+}
+.wrap {
+    background-color: black;
+    height: 100%;
+    width: 70%;
+    margin: 0 auto;
+    box-sizing: border-box;
+}
+.title {
+    background-color: lightblue;
+    height: 20%;
+    text-align: center;
+}
+.settings {
+    background-color: lightgrey;
+    height: 15%;
+}
+.countdown {
+    background-color: lightgreen;
+    height: 65%;
+}
