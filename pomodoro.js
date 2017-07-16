@@ -31,16 +31,54 @@ $(document).ready(function() {
     session_plus.click(function(){
         var current_session_length = session_time.html();
         session_time.html(Number(current_session_length)+1);
-    });    
+    });
+
+    //create method to format time
+
+    function formatTime() {
+        var current_minute = facetime.html().substring(0,2);
+        var current_second = facetime.html().substring(3,5);
+        var next_second = "";
+        var next_minute = "";
+        if(current_second === "00") {
+            next_second += "59";
+            next_minute += Number(current_minute) - 1;
+        } else {
+            next_minute += current_minute;
+            if(Number(current_second) <= 10) {
+                next_second = "0" + (Number(current_second) -1);
+            } else {
+                next_second += Number(current_second) - 1;
+            }
+        }
+        facetime.html(next_minute + ":" + next_second);
+    }
+
+    //create the countdown interval
+
+    var interval;
 
     //Handle the start button
     start.click(function(){
+        //disable start button
         start.prop("disabled", "true");
         start.css("background-color", "grey");
+
+        //enable pause button
+        pause.removeAttr("disabled");
+        pause.css("background-color", "lightblue");
+
+        //prevent user from changing session/break time limits
         break_minus.hide();
         break_plus.hide();
         session_plus.hide();
         session_minus.hide();
+
+        //
+
+        interval = setInterval(function() {
+            formatTime();
+        }, 1000);
     });
 
     //handle pause button
@@ -48,14 +86,26 @@ $(document).ready(function() {
     pause.click(function() {
         if(boolean) {
             boolean = false;
+            clearInterval(interval);
         } else {
+            interval = setInterval(function() {
+                formatTime();
+                }, 1000);
             boolean = true;
         }
-
     });
 
     //handle stop
 
+    stop.click(function(){
+        //enable the start button
+        start.removeAttr("disabled");
+        start.css("background-color", "lightgreen");
+        //disable pause button
+        pause.prop("disabled", "true");
+        pause.css("background-color", "grey");
+
+    });
 
 
 
