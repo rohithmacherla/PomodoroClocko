@@ -27,10 +27,12 @@ $(document).ready(function() {
         if(current_session_length > 0) {
             session_time.html(Number(current_session_length) -1);
         }
+        facetime.html(session_time.html() + ":00");
     });
     session_plus.click(function(){
         var current_session_length = session_time.html();
         session_time.html(Number(current_session_length)+1);
+        facetime.html(session_time.html() + ":00");
     });
 
     //create method to format time
@@ -104,7 +106,14 @@ $(document).ready(function() {
         //disable pause button
         pause.prop("disabled", "true");
         pause.css("background-color", "grey");
-
+        //stop the countdown timer
+        clearInterval(interval);
+        var reset_time = session_time.html() + ":00";
+        facetime.html(reset_time);
+        break_minus.show();
+        break_plus.show();
+        session_plus.show();
+        session_minus.show();
     });
 
 
