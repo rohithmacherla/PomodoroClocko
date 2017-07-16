@@ -9,7 +9,8 @@ $(document).ready(function() {
     var pause = $(".pause");
     var stop = $(".stop");
     var facetime = $(".facetime");
-
+    var music = document.createElement('audio');
+    music.setAttribute('src', 'music.mp3');
     //Handle the plus/minus buttons for session and break settings
 
     break_minus.click(function(){
@@ -27,15 +28,26 @@ $(document).ready(function() {
         if(current_session_length > 0) {
             session_time.html(Number(current_session_length) -1);
         }
+        if(current_session_length > 0 && current_session_length <=10) {
+            session_time.html("0" +(Number(current_session_length)-1));
+        }
         facetime.html(session_time.html() + ":00");
     });
     session_plus.click(function(){
         var current_session_length = session_time.html();
-        session_time.html(Number(current_session_length)+1);
+        if(current_session_length <10 && current_session_length!=9) {
+            session_time.html("0" +(Number(current_session_length)+1));
+        } else {
+            session_time.html(Number(current_session_length)+1);
+        }
         facetime.html(session_time.html() + ":00");
     });
 
+
+
+
     //create method to format time
+    var below10 = true;
 
     function formatTime() {
         var current_minute = facetime.html().substring(0,2);
@@ -44,7 +56,11 @@ $(document).ready(function() {
         var next_minute = "";
         if(current_second === "00") {
             next_second += "59";
-            next_minute += Number(current_minute) - 1;
+            if(Number(current_minute) <= 10) {
+                next_minute += "0"+(Number(current_minute) - 1);
+            } else {
+                next_minute += Number(current_minute) - 1;
+            }
         } else {
             next_minute += current_minute;
             if(Number(current_second) <= 10) {
@@ -53,6 +69,11 @@ $(document).ready(function() {
                 next_second += Number(current_second) - 1;
             }
         }
+        if(next_minute == "00" && next_second == "10" && below10) {
+            below10 = false;
+            music.play();
+        }
+
         facetime.html(next_minute + ":" + next_second);
     }
 
@@ -107,6 +128,7 @@ $(document).ready(function() {
         pause.prop("disabled", "true");
         pause.css("background-color", "grey");
         //stop the countdown timer
+        clearInterval(interval);
         clearInterval(interval);
         var reset_time = session_time.html() + ":00";
         facetime.html(reset_time);
