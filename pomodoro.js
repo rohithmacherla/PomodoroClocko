@@ -71,7 +71,10 @@ $(document).ready(function() {
         }
         if(next_minute == "00" && next_second == "10" && below10) {
             below10 = false;
+        }
+        if(next_minute == "00" && next_second =="00") {
             music.play();
+            clearInterval(interval);
         }
 
         facetime.html(next_minute + ":" + next_second);
